@@ -1,6 +1,8 @@
-package com.j2eeapi.com.model;
+package com.j2eeapi.com.Model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import org.springframework.stereotype.Repository;
+
 import java.time.LocalDateTime;
 
 @Entity
