@@ -1,7 +1,9 @@
-package com.j2eeapi.com.model;
+package com.j2eeapi.com.Model;
 
-import javax.persistence.*;
-import java.util.set;
+import jakarta.persistence.*;
+import org.springframework.stereotype.Repository;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -19,7 +21,7 @@ public class User{
     }
 
     public String getName(){
-        return name
+        return name;
     }
 
     public String getEmail() {
