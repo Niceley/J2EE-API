@@ -1,12 +1,9 @@
-package com.j2eeapi.com.Model;
+package com.j2eeapi.com.model;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Repository;
-
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "users")
+//@Table(name = "users")
 public class User{
     @Id
     private Long id;
@@ -29,10 +26,6 @@ public class User{
     }
 
     // Setter
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public void setName(String name) {
         this.name = name;
