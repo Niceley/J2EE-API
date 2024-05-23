@@ -1,29 +1,77 @@
 package com.j2eeapi.com.model;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "tickets")
 public class Ticket {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idBillet;
-    private int PrixBillet;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public int getIdBillet() {
-        return idBillet;
+    @ManyToOne
+    @JoinColumn(name = "event_id", nullable = false)
+    private Event event;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    private LocalDateTime purchaseDate;
+    private int quantity;
+    private int price;
+
+    // Getters
+
+    public Long getId() {
+        return id;
     }
 
-    public int getPrixBillet() {
-        return PrixBillet;
+    public Event getEvent() {
+        return event;
     }
 
-    public void setPrixBillet(int prixBillet) {
-        PrixBillet = prixBillet;
+    public User getUser() {
+        return user;
     }
 
-    public void setIdBillet(int idBillet) {
-        this.idBillet = idBillet;
+    public LocalDateTime getPurchaseDate() {
+        return purchaseDate;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    // Setters
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setEvent(Event event) {
+        this.event = event;
+    }
+
+    public void setPurchaseDate(LocalDateTime purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }

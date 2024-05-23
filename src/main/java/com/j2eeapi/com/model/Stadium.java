@@ -2,6 +2,8 @@ package com.j2eeapi.com.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Stadium {
     @Id
