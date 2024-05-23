@@ -6,16 +6,14 @@ import java.time.LocalDateTime;
 
 
 @Entity
-@Table(name = "Events")
 public class Event{
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private LocalDateTime dateTime;
-    private String stadium;
+    private String StatutEpreuve;
 
-    // Getter
     public Long getId() {
         return id;
     }
@@ -28,11 +26,10 @@ public class Event{
         return dateTime;
     }
 
-    public String getStadium() {
-        return stadium;
+    public String getStatutEpreuve() {
+        return StatutEpreuve;
     }
 
-    // Setter
     public void setId(Long id) {
         this.id = id;
     }
@@ -45,7 +42,7 @@ public class Event{
         this.dateTime = dateTime;
     }
 
-    public void setStadium(String stadium) {
-        this.stadium = stadium;
+    public void setStatutEpreuve(String statutEpreuve) {
+        StatutEpreuve = statutEpreuve;
     }
 }
