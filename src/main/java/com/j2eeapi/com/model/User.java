@@ -3,44 +3,70 @@ package com.j2eeapi.com.model;
 import jakarta.persistence.*;
 
 @Entity
-//@Table(name = "users")
 public class User{
     @Id
-    private Long id;
-    private String name;
-    private String email;
-    private String password;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int IdUtilisateur;
+    private String Motdepasse;
+    private String Nom;
+    private String Prenom;
+    private String Numero;
+    private String Mail;
+    private String RoleUtilisateur;
 
-    // Getter
-
-    public Long getId() {
-        return id;
+    public int getIdUtilisateur() {
+        return IdUtilisateur;
     }
 
-    public String getName(){
-        return name;
+    public void setIdUtilisateur(int idUtilisateur) {
+        IdUtilisateur = idUtilisateur;
     }
 
-    public String getEmail() {
-        return email;
+    public String getMotdepasse() {
+        return Motdepasse;
     }
 
-    // Setter
-
-    public void setName(String name) {
-        this.name = name;
+    public void setMotdepasse(String motdepasse) {
+        Motdepasse = motdepasse;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public String getNom() {
+        return Nom;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setNom(String nom) {
+        Nom = nom;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPrenom() {
+        return Prenom;
     }
 
+    public void setPrenom(String prenom) {
+        Prenom = prenom;
+    }
+
+    public String getNumero() {
+        return Numero;
+    }
+
+    public void setNumero(String numero) {
+        Numero = numero;
+    }
+
+    public String getMail() {
+        return Mail;
+    }
+
+    public void setMail(String mail) {
+        Mail = mail;
+    }
+
+    public String getRoleUtilisateur() {
+        return RoleUtilisateur;
+    }
+
+    public void setRoleUtilisateur(String roleUtilisateur) {
+        RoleUtilisateur = roleUtilisateur;
+    }
 }
