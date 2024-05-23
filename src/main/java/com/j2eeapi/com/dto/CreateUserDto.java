@@ -1,11 +1,7 @@
-package com.j2eeapi.com.model;
+package com.j2eeapi.com.dto;
 
-import jakarta.persistence.*;
+public class CreateUserDto {
 
-@Entity
-public class User{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer IdUtilisateur;
     private String Motdepasse;
     private String Nom;
@@ -13,6 +9,17 @@ public class User{
     private String Numero;
     private String Mail;
     private String RoleUtilisateur;
+
+
+    public CreateUserDto(Integer idUtilisateur, String motdepasse, String nom, String prenom, String numero, String mail, String roleUtilisateur) {
+        IdUtilisateur = idUtilisateur;
+        Motdepasse = motdepasse;
+        Nom = nom;
+        Prenom = prenom;
+        Numero = numero;
+        Mail = mail;
+        RoleUtilisateur = roleUtilisateur;
+    }
 
     public Integer getIdUtilisateur() {
         return IdUtilisateur;
