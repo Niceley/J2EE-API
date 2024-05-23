@@ -5,40 +5,34 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "stadiums")
 public class Stadium {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-
-    @OneToMany(mappedBy = "stadium")
-    private List<Event> events;
-
-    // Getters
-
-    public Long getId() {
-        return id;
-    }
+    private int CapaciteStade;
 
     public String getName() {
         return name;
     }
 
-    public List<Event> getEvents() {
-        return events;
+    public int getCapaciteStade() {
+        return CapaciteStade;
     }
 
-    //Setters
+    public Long getId() {
+        return id;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setCapaciteStade(int capaciteStade) {
+        CapaciteStade = capaciteStade;
     }
 }

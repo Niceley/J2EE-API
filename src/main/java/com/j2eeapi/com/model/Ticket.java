@@ -2,76 +2,62 @@ package com.j2eeapi.com.model;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
-
 @Entity
-@Table(name = "tickets")
 public class Ticket {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-    @ManyToOne
-    @JoinColumn(name = "event_id", nullable = false)
-    private Event event;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
-    private LocalDateTime purchaseDate;
-    private int quantity;
     private int price;
 
-    // Getters
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private Event idEvent;
 
-    public Long getId() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "idOrder")
+    private Order idOrder;
 
-    public Event getEvent() {
-        return event;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public LocalDateTime getPurchaseDate() {
-        return purchaseDate;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
+    @ManyToOne
+    @JoinColumn(name = "idUtilisateur")
+    private User UtilisateurInscrit;
+;
     public int getPrice() {
         return price;
     }
 
-    // Setters
+    public Event getIdEvent() {
+        return idEvent;
+    }
+
+    public Order getIdOrder() {
+        return idOrder;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public User getUtilisateurInscrit() {
+        return UtilisateurInscrit;
+    }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setEvent(Event event) {
-        this.event = event;
+    public void setUtilisateurInscrit(User utilisateurInscrit) {
+        UtilisateurInscrit = utilisateurInscrit;
     }
 
-    public void setPurchaseDate(LocalDateTime purchaseDate) {
-        this.purchaseDate = purchaseDate;
+    public Long getId() {
+        return id;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setIdEvent(Event idEvent) {
+        this.idEvent = idEvent;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
+    public void setIdOrder(Order idOrder) {
+        this.idOrder = idOrder;
     }
 }
