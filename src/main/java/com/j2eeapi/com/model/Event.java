@@ -13,7 +13,14 @@ public class Event{
     private Long id;
     private String name;
     private LocalDateTime dateTime;
+<<<<<<< Updated upstream
     private String stadium;
+=======
+    private String StatutEpreuve;
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private Stadium idStade;
+>>>>>>> Stashed changes
 
     // Getter
     public Long getId() {
@@ -47,5 +54,13 @@ public class Event{
 
     public void setStadium(String stadium) {
         this.stadium = stadium;
+    }
+
+    public Stadium getIdStade() {
+        return idStade;
+    }
+
+    public void setIdStade(Stadium idStade) {
+        this.idStade = idStade;
     }
 }
