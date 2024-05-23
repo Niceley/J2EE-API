@@ -2,13 +2,11 @@ package com.j2eeapi.com.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 public class Stadium {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long idStadium;
     private String name;
     private int CapaciteStade;
 
@@ -20,12 +18,12 @@ public class Stadium {
         return CapaciteStade;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdStadium() {
+        return idStadium;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdStadium(Long idStadium) {
+        this.idStadium = idStadium;
     }
 
     public void setName(String name) {
