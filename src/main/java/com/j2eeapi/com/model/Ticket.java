@@ -6,19 +6,19 @@ import jakarta.persistence.*;
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long idTicket;
     private int price;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "idEvent")
     private Event idEvent;
 
     @ManyToOne
     @JoinColumn(name = "idOrder")
-    private Order idOrder;
+    private Orders idOrders;
 
     @ManyToOne
-    @JoinColumn(name = "idUtilisateur")
+    @JoinColumn(name = "idUtilisateurInscrit")
     private User UtilisateurInscrit;
 ;
     public int getPrice() {
@@ -29,8 +29,8 @@ public class Ticket {
         return idEvent;
     }
 
-    public Order getIdOrder() {
-        return idOrder;
+    public Orders getIdOrder() {
+        return idOrders;
     }
 
     public void setPrice(int price) {
@@ -41,23 +41,23 @@ public class Ticket {
         return UtilisateurInscrit;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdTicket(Long idTicket) {
+        this.idTicket = idTicket;
     }
 
     public void setUtilisateurInscrit(User utilisateurInscrit) {
         UtilisateurInscrit = utilisateurInscrit;
     }
 
-    public Long getId() {
-        return id;
+    public Long getIdTicket() {
+        return idTicket;
     }
 
     public void setIdEvent(Event idEvent) {
         this.idEvent = idEvent;
     }
 
-    public void setIdOrder(Order idOrder) {
-        this.idOrder = idOrder;
+    public void setIdOrder(Orders idOrders) {
+        this.idOrders = idOrders;
     }
 }

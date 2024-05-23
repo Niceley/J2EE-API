@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer IdUtilisateur;
+    private Long IdUtilisateur;
     private String Motdepasse;
     private String Nom;
     private String Prenom;
@@ -14,11 +14,11 @@ public class User{
     private String Mail;
     private String RoleUtilisateur;
 
-    public Integer getIdUtilisateur() {
+    public Long getIdUtilisateur() {
         return IdUtilisateur;
     }
 
-    public void setIdUtilisateur(Integer idUtilisateur) {
+    public void setIdUtilisateur(Long idUtilisateur) {
         IdUtilisateur = idUtilisateur;
     }
 

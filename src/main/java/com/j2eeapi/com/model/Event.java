@@ -2,30 +2,30 @@ package com.j2eeapi.com.model;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 
 @Entity
 public class Event{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long idEvent;
     private String name;
-    private LocalDateTime dateTime;
+    private Date dateTime;
     private String StatutEpreuve;
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "idStade")
     private Stadium idStade;
 
-    public Long getId() {
-        return id;
+    public Long getIdEvent() {
+        return idEvent;
     }
 
     public String getName(){
         return name;
     }
 
-    public LocalDateTime getDateTime() {
+    public Date getDateTime() {
         return dateTime;
     }
 
@@ -37,15 +37,15 @@ public class Event{
         StatutEpreuve = statutEpreuve;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdEvent(Long idEvent) {
+        this.idEvent = idEvent;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
+    public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
 
