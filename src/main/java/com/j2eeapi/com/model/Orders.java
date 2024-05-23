@@ -8,18 +8,18 @@ import java.util.Date;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer idOrder;
+    private Long idOrder;
     private Date dateOrder;
     private String etatCommande;
     @ManyToOne
     @JoinColumn(name = "idUtilisateur")
     private User idUtilisateur;
 
-    public Integer getIdOrder() {
+    public Long getIdOrder() {
         return idOrder;
     }
 
-    public void setIdOrder(Integer idOrder) {
+    public void setIdOrder(Long idOrder) {
         this.idOrder = idOrder;
     }
 
