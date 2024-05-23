@@ -12,14 +12,10 @@ public class Event{
     private Long id;
     private String name;
     private LocalDateTime dateTime;
-<<<<<<< Updated upstream
-    private String stadium;
-=======
     private String StatutEpreuve;
     @ManyToOne
     @JoinColumn(name = "id")
     private Stadium idStade;
->>>>>>> Stashed changes
 
     public Long getId() {
         return id;
@@ -37,6 +33,10 @@ public class Event{
         return StatutEpreuve;
     }
 
+    public void setStatutEpreuve(String statutEpreuve) {
+        StatutEpreuve = statutEpreuve;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -47,10 +47,6 @@ public class Event{
 
     public void setDateTime(LocalDateTime dateTime) {
         this.dateTime = dateTime;
-    }
-
-    public void setStadium(String stadium) {
-        this.stadium = stadium;
     }
 
     public Stadium getIdStade() {
