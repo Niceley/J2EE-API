@@ -7,23 +7,23 @@ import java.util.Date;
 
 public class CreateOrderDto {
 
-    private Integer idOrder;
+    private Long idOrder;
     private Date dateOrder;
     private String etatCommande;
     private User idUtilisateur;
 
-    public CreateOrderDto(Integer idOrder, User idUtilisateur, String etatCommande, Date dateOrder) {
+    public CreateOrderDto(Long idOrder, User idUtilisateur, String etatCommande, Date dateOrder) {
         this.idOrder = idOrder;
         this.idUtilisateur = idUtilisateur;
         this.etatCommande = etatCommande;
         this.dateOrder = dateOrder;
     }
 
-    public Integer getIdOrder() {
+    public Long getIdOrder() {
         return idOrder;
     }
 
-    public void setIdOrder(Integer idOrder) {
+    public void setIdOrder(Long idOrder) {
         this.idOrder = idOrder;
     }
 
