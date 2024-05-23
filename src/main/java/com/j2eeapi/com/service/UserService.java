@@ -33,13 +33,4 @@ public class UserService {
         repository.deleteById(id);
         return "User removed !! "+id;
     }
-
-    public User updateUser(User user){
-        User existingUser = repository.findById(user.getId()).orElse(null);
-        assert existingUser != null;
-        existingUser.setName(user.getName());
-        existingUser.setEmail(user.getEmail());
-        existingUser.setPassword(user.getPassword());
-        return repository.save(existingUser);
-    }
 }
