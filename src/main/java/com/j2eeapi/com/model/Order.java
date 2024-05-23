@@ -1,9 +1,6 @@
 package com.j2eeapi.com.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -14,6 +11,9 @@ public class Order {
     private int idOrder;
     private Date dateOrder;
     private String etatCommande;
+    @ManyToOne
+    @JoinColumn(name = "idUtilisateur")
+    private User idUtilisateur;
 
     public int getIdOrder() {
         return idOrder;
@@ -37,5 +37,13 @@ public class Order {
 
     public void setEtatCommande(String etatCommande) {
         this.etatCommande = etatCommande;
+    }
+
+    public User getIdUtilisateur() {
+        return idUtilisateur;
+    }
+
+    public void setIdUtilisateur(User idUtilisateur) {
+        this.idUtilisateur = idUtilisateur;
     }
 }
