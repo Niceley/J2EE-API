@@ -2,7 +2,7 @@ package com.j2eeapi.com.dto;
 
 public class CreateUserDto {
 
-    private Integer IdUtilisateur;
+    private Long IdUtilisateur;
     private String Motdepasse;
     private String Nom;
     private String Prenom;
@@ -11,7 +11,7 @@ public class CreateUserDto {
     private String RoleUtilisateur;
 
 
-    public CreateUserDto(Integer idUtilisateur, String motdepasse, String nom, String prenom, String numero, String mail, String roleUtilisateur) {
+    public CreateUserDto(Long idUtilisateur, String motdepasse, String nom, String prenom, String numero, String mail, String roleUtilisateur) {
         IdUtilisateur = idUtilisateur;
         Motdepasse = motdepasse;
         Nom = nom;
@@ -21,11 +21,11 @@ public class CreateUserDto {
         RoleUtilisateur = roleUtilisateur;
     }
 
-    public Integer getIdUtilisateur() {
+    public Long getIdUtilisateur() {
         return IdUtilisateur;
     }
 
-    public void setIdUtilisateur(Integer idUtilisateur) {
+    public void setIdUtilisateur(Long idUtilisateur) {
         IdUtilisateur = idUtilisateur;
     }
 
