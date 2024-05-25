@@ -29,6 +29,10 @@ public class Ticket {
         UtilisateurInscrit = utilisateurInscrit;
     }
 
+    public Ticket() {
+
+    }
+
     ;
     public int getPrice() {
         return price;

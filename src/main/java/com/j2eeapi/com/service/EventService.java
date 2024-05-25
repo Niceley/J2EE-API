@@ -23,7 +23,7 @@ public class EventService {
                 createEventDto.getName(),
                 createEventDto.getDateTime(),
                 createEventDto.getStatutEpreuve(),
-                createEventDto.getIdStade());
+                createEventDto.getStade());
         event = repository.save(event);
         return new ResponseEntity<>(event, HttpStatus.CREATED);
     }
@@ -45,7 +45,7 @@ public class EventService {
     event.setName(updateEventDto.getName());
     event.setDateTime(updateEventDto.getDateTime());
     event.setStatutEpreuve(updateEventDto.getStatutEpreuve());
-    event.setIdStade(updateEventDto.getIdStade());
+    event.setStade(updateEventDto.getIdStade());
     event = this.repository.save(event);
     return new ResponseEntity<>(event, HttpStatus.OK);
     }
