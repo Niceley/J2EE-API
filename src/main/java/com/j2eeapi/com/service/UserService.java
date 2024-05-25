@@ -48,9 +48,9 @@ public class UserService {
     }
 
     public ResponseEntity<User> createUser(CreateUserDto createUserDto){
-        if(repository.findById(createUserDto.getIdUtilisateur()).isPresent()){
-            throw new RuntimeException("Utilisateur existant");
-        }
+        //if(repository.findById(createUserDto.getIdUtilisateur()).isPresent()){
+        //    throw new RuntimeException("Utilisateur existant");
+        //}
         String hashedpassword = hashPassword(createUserDto.getMotdepasse());
         User newUser;
         newUser = new User(
