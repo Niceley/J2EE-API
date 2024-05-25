@@ -15,6 +15,13 @@ public class Orders {
     @JoinColumn(name = "idUtilisateur")
     private User idUtilisateur;
 
+    public Orders(Long idOrder, Date dateOrder, String etatCommande, User idUtilisateur) {
+        this.idOrder = idOrder;
+        this.dateOrder = dateOrder;
+        this.etatCommande = etatCommande;
+        this.idUtilisateur = idUtilisateur;
+    }
+
     public Long getIdOrder() {
         return idOrder;
     }
