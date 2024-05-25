@@ -2,22 +2,25 @@ package com.j2eeapi.com.dto;
 
 import com.j2eeapi.com.model.Event;
 import com.j2eeapi.com.model.Orders;
+import com.j2eeapi.com.model.Ticket;
 import com.j2eeapi.com.model.User;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 public class CreateTicketDto {
     private Long id;
     private int price;
     private Event idEvent;
-    private Orders idOrder;
     private User UtilisateurInscrit;
+    private List<Ticket> tickets;
 
-    public CreateTicketDto(Long id, int price, Event idEvent, Orders idOrder, User utilisateurInscrit) {
+    public CreateTicketDto(Long id, int price, Event idEvent, Orders idOrder, User utilisateurInscrit, List<Ticket> tickets) {
         this.id = id;
         this.price = price;
         this.idEvent = idEvent;
-        this.idOrder = idOrder;
-        UtilisateurInscrit = utilisateurInscrit;
+        this.UtilisateurInscrit = utilisateurInscrit;
+        this.tickets = tickets;
     }
 
     public Long getId() {
@@ -44,19 +47,19 @@ public class CreateTicketDto {
         this.idEvent = idEvent;
     }
 
-    public Orders getIdOrder() {
-        return idOrder;
-    }
-
-    public void setIdOrder(Orders idOrder) {
-        this.idOrder = idOrder;
-    }
-
     public User getUtilisateurInscrit() {
         return UtilisateurInscrit;
     }
 
     public void setUtilisateurInscrit(User utilisateurInscrit) {
         UtilisateurInscrit = utilisateurInscrit;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }

@@ -3,6 +3,7 @@ package com.j2eeapi.com.model;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Orders {
@@ -15,11 +16,16 @@ public class Orders {
     @JoinColumn(name = "idUtilisateur")
     private User idUtilisateur;
 
-    public Orders(Long idOrder, Date dateOrder, String etatCommande, User idUtilisateur) {
+    @OneToMany
+    @JoinColumn(name = "ticket")
+    private List<Ticket> tickets;
+
+    public Orders(Long idOrder, Date dateOrder, String etatCommande, User idUtilisateur, List<Ticket> tickets) {
         this.idOrder = idOrder;
         this.dateOrder = dateOrder;
         this.etatCommande = etatCommande;
         this.idUtilisateur = idUtilisateur;
+        this.tickets = tickets;
     }
 
     public Long getIdOrder() {
@@ -52,5 +58,13 @@ public class Orders {
 
     public void setIdUtilisateur(User idUtilisateur) {
         this.idUtilisateur = idUtilisateur;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }
