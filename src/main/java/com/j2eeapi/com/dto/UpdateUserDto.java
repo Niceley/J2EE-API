@@ -1,11 +1,6 @@
-package com.j2eeapi.com.model;
+package com.j2eeapi.com.dto;
 
-import jakarta.persistence.*;
-
-@Entity
-public class User{
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class UpdateUserDto {
     private Long IdUtilisateur;
     private String Motdepasse;
     private String Nom;
@@ -14,14 +9,15 @@ public class User{
     private String Mail;
     private String RoleUtilisateur;
 
-    public User(Long idUtilisateur, String motdepasse, String nom, String prenom, String numero, String mail, String roleUtilisateur) {
-        this.IdUtilisateur = idUtilisateur;
-        this.Motdepasse = motdepasse;
-        this.Nom = nom;
-        this.Prenom = prenom;
-        this.Numero = numero;
-        this.Mail = mail;
-        this.RoleUtilisateur = roleUtilisateur;
+
+    public UpdateUserDto(Long idUtilisateur, String motdepasse, String nom, String prenom, String numero, String mail, String roleUtilisateur) {
+        IdUtilisateur = idUtilisateur;
+        Motdepasse = motdepasse;
+        Nom = nom;
+        Prenom = prenom;
+        Numero = numero;
+        Mail = mail;
+        RoleUtilisateur = roleUtilisateur;
     }
 
     public Long getIdUtilisateur() {
@@ -79,4 +75,5 @@ public class User{
     public void setRoleUtilisateur(String roleUtilisateur) {
         RoleUtilisateur = roleUtilisateur;
     }
+
 }
