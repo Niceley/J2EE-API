@@ -20,6 +20,10 @@ public class Orders {
     @JoinColumn(name = "ticket")
     private List<Ticket> tickets;
 
+    public Orders(){
+
+    }
+
     public Orders(Long idOrder, Date dateOrder, String etatCommande, User idUtilisateur, List<Ticket> tickets) {
         this.idOrder = idOrder;
         this.dateOrder = dateOrder;
