@@ -21,16 +21,15 @@ public class Ticket {
     @JoinColumn(name = "idUtilisateurInscrit")
     private User UtilisateurInscrit;
 
+    public Ticket() {
+    }
+
     public Ticket(Long idTicket, int price, Event idEvent, Orders idOrders, User utilisateurInscrit) {
         this.idTicket = idTicket;
         this.price = price;
         this.idEvent = idEvent;
         this.idOrders = idOrders;
         UtilisateurInscrit = utilisateurInscrit;
-    }
-
-    public Ticket() {
-
     }
 
     ;

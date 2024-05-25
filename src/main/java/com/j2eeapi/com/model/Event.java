@@ -17,16 +17,15 @@ public class Event {
     @JoinColumn(name = "Stade")
     private Stadium Stade;
 
+    public Event() {
+    }
+
     public Event(Long idEvent, String name, Date dateTime, String statutEpreuve, Stadium Stade) {
         this.idEvent = idEvent;
         this.name = name;
         this.dateTime = dateTime;
         StatutEpreuve = statutEpreuve;
         this.Stade = Stade;
-    }
-
-    public Event() {
-
     }
 
     public Long getIdEvent() {
