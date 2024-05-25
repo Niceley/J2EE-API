@@ -1,7 +1,12 @@
 package com.j2eeapi.com.controller;
 
 
+import com.j2eeapi.com.dto.CreateUserDto;
+import com.j2eeapi.com.dto.UpdateUserDto;
 import com.j2eeapi.com.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.j2eeapi.com.service.UserService;
 
@@ -10,29 +15,53 @@ import java.util.List;
 @RestController
 public class UserController {
 
+    @Autowired
     private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @PostMapping("/add-user")
-    public User addUser(User user){
-        return userService.saveUser(user);
-    }
     @GetMapping("/users")
-    public List<User> getUsers(){
-        return userService.getUsers();
+    public ResponseEntity<List<User>> findAllUsers(){
+        try{
+            return userService.findAllUsers();
+        }catch (RuntimeException e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    @GetMapping("/user/{id}")
-    public User getUserById(@PathVariable Long id){
-        return userService.getUserById(id);
+    @GetMapping("/users/{idUser}")
+    public ResponseEntity<User> findUserById(@PathVariable Long idUser){
+        try{
+            return userService.findUserById(idUser);
+        }catch(RuntimeException e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
-    @DeleteMapping("/delete-user/{id}")
-    public String deleteUser(@PathVariable Long id){
-        return userService.deleteUser(id);
+    @PutMapping("/users/{idUser}")
+    public ResponseEntity<User> updateUser(@PathVariable Long idUser, @RequestBody UpdateUserDto updateUserDto){
+        try{
+            return userService.updateUser(idUser, updateUserDto);
+        }catch(RuntimeException e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
+    @PostMapping("/users")
+    public ResponseEntity<User> createUser(@RequestBody CreateUserDto createUserDto){
+        try{
+            return userService.createUser(createUserDto);
+        }catch(RuntimeException e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @DeleteMapping("/users/{idUser}")
+    public ResponseEntity<HttpStatus> deleteUser(@PathVariable Long idUser){
+        return userService.deleteUser(idUser);
+    }
+
 
 }
