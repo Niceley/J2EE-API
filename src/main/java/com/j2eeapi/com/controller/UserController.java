@@ -13,13 +13,14 @@ import com.j2eeapi.com.service.UserService;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/users")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
 
-    @GetMapping("/users")
+    @GetMapping("")
     public ResponseEntity<List<User>> findAllUsers(){
         try{
             return userService.findAllUsers();
@@ -28,7 +29,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/users/{idUser}")
+    @GetMapping("/{idUser}")
     public ResponseEntity<User> findUserById(@PathVariable Long idUser){
         try{
             return userService.findUserById(idUser);
@@ -37,7 +38,7 @@ public class UserController {
         }
     }
 
-    @PutMapping("/users/{idUser}")
+    @PutMapping("/{idUser}")
     public ResponseEntity<User> updateUser(@PathVariable Long idUser, @RequestBody UpdateUserDto updateUserDto){
         try{
             return userService.updateUser(idUser, updateUserDto);
@@ -46,7 +47,7 @@ public class UserController {
         }
     }
 
-    @PostMapping("/users")
+    @PostMapping("")
     public ResponseEntity<User> createUser(@RequestBody CreateUserDto createUserDto){
         try{
             return userService.createUser(createUserDto);
