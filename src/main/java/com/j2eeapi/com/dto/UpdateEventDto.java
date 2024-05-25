@@ -9,11 +9,11 @@ public class UpdateEventDto {
 
     private Long id;
     private String name;
-    private LocalDateTime dateTime;
+    private Date dateTime;
     private String StatutEpreuve;
     private Stadium idStade;
 
-    public UpdateEventDto(Long id, Stadium idStade, String statutEpreuve, LocalDateTime dateTime, String name) {
+    public UpdateEventDto(Long id, Stadium idStade, String statutEpreuve, Date dateTime, String name) {
         this.id = id;
         this.idStade = idStade;
         StatutEpreuve = statutEpreuve;
@@ -41,7 +41,7 @@ public class UpdateEventDto {
         return dateTime;
     }
 
-    public void setDateTime(LocalDateTime dateTime) {
+    public void setDateTime(Date dateTime) {
         this.dateTime = dateTime;
     }
 
