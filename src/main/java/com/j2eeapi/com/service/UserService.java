@@ -40,7 +40,7 @@ public class UserService {
             throw new RuntimeException("Utilisateur inexistant.");
         }
         String hashedPassword = hashPassword(loginDto.getMotdepasse());
-        if(!user.getMotdepasse().equals(loginDto.getMotdepasse())){
+        if(!user.getMotdepasse().equals(hashedPassword)){
             throw new RuntimeException("Mauvais mot de passe.");
         }
         return new ResponseEntity<>(user, HttpStatus.OK);

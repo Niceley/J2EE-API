@@ -15,13 +15,13 @@ public class User{
     private String RoleUtilisateur;
 
     public User(Long idUtilisateur, String motdepasse, String nom, String prenom, String numero, String mail, String roleUtilisateur) {
-        IdUtilisateur = idUtilisateur;
-        Motdepasse = motdepasse;
-        Nom = nom;
-        Prenom = prenom;
-        Numero = numero;
-        Mail = mail;
-        RoleUtilisateur = roleUtilisateur;
+        this.IdUtilisateur = idUtilisateur;
+        this.Motdepasse = motdepasse;
+        this.Nom = nom;
+        this.Prenom = prenom;
+        this.Numero = numero;
+        this.Mail = mail;
+        this.RoleUtilisateur = roleUtilisateur;
     }
 
     public Long getIdUtilisateur() {
