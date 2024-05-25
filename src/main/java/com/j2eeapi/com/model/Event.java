@@ -14,15 +14,18 @@ public class Event {
     private Date dateTime;
     private String StatutEpreuve;
     @ManyToOne
-    @JoinColumn(name = "idStade")
-    private Stadium idStade;
+    @JoinColumn(name = "Stade")
+    private Stadium Stade;
 
-    public Event(Long idEvent, String name, Date dateTime, String statutEpreuve, Stadium idStade) {
+    public Event() {
+    }
+
+    public Event(Long idEvent, String name, Date dateTime, String statutEpreuve, Stadium Stade) {
         this.idEvent = idEvent;
         this.name = name;
         this.dateTime = dateTime;
         StatutEpreuve = statutEpreuve;
-        this.idStade = idStade;
+        this.Stade = Stade;
     }
 
     public Long getIdEvent() {
@@ -57,11 +60,11 @@ public class Event {
         this.dateTime = dateTime;
     }
 
-    public Stadium getIdStade() {
-        return idStade;
+    public Stadium getStade() {
+        return Stade;
     }
 
-    public void setIdStade(Stadium idStade) {
-        this.idStade = idStade;
+    public void setStade(Stadium stade) {
+        this.Stade = stade;
     }
 }

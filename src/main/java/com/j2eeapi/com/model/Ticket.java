@@ -16,7 +16,7 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name = "idUtilisateurInscrit")
     private User UtilisateurInscrit;
-
+  
     public Ticket(Long idTicket, int price, Event idEvent, User utilisateurInscrit) {
         this.idTicket = idTicket;
         this.price = price;

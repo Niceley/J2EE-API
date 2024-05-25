@@ -10,6 +10,9 @@ public class Stadium {
     private String name;
     private int CapaciteStade;
 
+    public Stadium() {
+    }
+
     public Stadium(Long idStadium, String name, int capaciteStade) {
         this.idStadium = idStadium;
         this.name = name;
