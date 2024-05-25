@@ -22,7 +22,7 @@ public class Orders {
             joinColumns = @JoinColumn(name = "idOrder"),
             inverseJoinColumns = @JoinColumn(name = "idTicket")
     )
-    private List<Ticket> tickets;
+    private List<Ticket> s;
 
     public List<Ticket> getTickets() {
         return tickets;
@@ -34,12 +34,16 @@ public class Orders {
 
     public Orders() {
     }
+    @OneToMany
+    @JoinColumn(name = "ticket")
+    private List<Ticket> tickets;
 
-    public Orders(Long idOrder, Date dateOrder, String etatCommande, User idUtilisateur) {
+    public Orders(Long idOrder, Date dateOrder, String etatCommande, User idUtilisateur, List<Ticket> tickets) {
         this.idOrder = idOrder;
         this.dateOrder = dateOrder;
         this.etatCommande = etatCommande;
         this.idUtilisateur = idUtilisateur;
+        this.tickets = tickets;
     }
 
     public Long getIdOrder() {
@@ -72,5 +76,13 @@ public class Orders {
 
     public void setIdUtilisateur(User idUtilisateur) {
         this.idUtilisateur = idUtilisateur;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }

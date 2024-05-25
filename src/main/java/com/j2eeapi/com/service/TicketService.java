@@ -22,7 +22,6 @@ public class TicketService {
         Ticket ticket = new Ticket(CreateTicketDto.getId(),
                 CreateTicketDto.getPrice(),
                 CreateTicketDto.getIdEvent(),
-                CreateTicketDto.getIdOrder(),
                 CreateTicketDto.getUtilisateurInscrit());
         ticket = ticketRepository.save(ticket);
         return new ResponseEntity<>(ticket, HttpStatus.CREATED);
@@ -44,7 +43,6 @@ public class TicketService {
 
         ticket.setPrice(UpdateTicketDto.getPrice());
         ticket.setIdEvent(UpdateTicketDto.getIdEvent());
-        ticket.setIdOrder(UpdateTicketDto.getIdOrder());
         ticket.setUtilisateurInscrit(UpdateTicketDto.getUtilisateurInscrit());
         ticket = this.ticketRepository.save(ticket);
         return new ResponseEntity<>(ticket, HttpStatus.OK);
