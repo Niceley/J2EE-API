@@ -19,12 +19,8 @@ import java.util.List;
 
 @Service
 public class UserService {
-    private final UserRepository repository;
-
     @Autowired
-    public UserService(UserRepository repository) {
-        this.repository = repository;
-    }
+    private UserRepository repository;
 
     public ResponseEntity<List<User>> findAllUsers(){
         try {
@@ -35,7 +31,7 @@ public class UserService {
     }
 
     public ResponseEntity<User> login(LoginDto loginDto){
-        User user = repository.findByidUtilisateur(loginDto.getIdUtilisateur()).orElseThrow(null);
+        User user = repository.findById(loginDto.getIdUtilisateur()).orElseThrow(null);
         if (user == null){
             throw new RuntimeException("Utilisateur inexistant.");
         }
@@ -47,12 +43,12 @@ public class UserService {
     }
 
     public ResponseEntity<User> findUserById(Long idUser){
-        User user = repository.findByidUtilisateur(idUser).orElseThrow(() -> new RuntimeException());
+        User user = repository.findById(idUser).orElseThrow(() -> new RuntimeException());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
     public ResponseEntity<User> createUser(CreateUserDto createUserDto){
-        if(repository.findByidUtilisateur(createUserDto.getIdUtilisateur()).isPresent()){
+        if(repository.findById(createUserDto.getIdUtilisateur()).isPresent()){
             throw new RuntimeException("Utilisateur existant");
         }
         String hashedpassword = hashPassword(createUserDto.getMotdepasse());
@@ -71,7 +67,7 @@ public class UserService {
     }
 
     public ResponseEntity<User> updateUser(Long idUser, UpdateUserDto updateUserDto){
-        User existingUser = repository.findByidUtilisateur(idUser).orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
+        User existingUser = repository.findById(idUser).orElseThrow(() -> new RuntimeException("Utilisateur introuvable"));
 
         existingUser.setNom(updateUserDto.getNom());
         existingUser.setPrenom(updateUserDto.getPrenom());
