@@ -22,6 +22,10 @@ public class Orders {
         this.idUtilisateur = idUtilisateur;
     }
 
+    public Orders() {
+
+    }
+
     public Long getIdOrder() {
         return idOrder;
     }

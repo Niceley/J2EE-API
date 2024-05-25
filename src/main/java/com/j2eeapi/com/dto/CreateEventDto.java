@@ -1,9 +1,7 @@
 package com.j2eeapi.com.dto;
 
 import com.j2eeapi.com.model.Stadium;
-import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class CreateEventDto {
@@ -12,12 +10,12 @@ public class CreateEventDto {
     private String name;
     private Date dateTime;
     private String StatutEpreuve;
-    private Stadium idStade;
+    private Stadium Stade;
 
-    public CreateEventDto(Long id, Stadium idStade, String statutEpreuve, Date dateTime, String name) {
+    public CreateEventDto(Long id, Stadium Stade, String statutEpreuve, Date dateTime, String name) {
         this.id = id;
-        this.idStade = idStade;
-        StatutEpreuve = statutEpreuve;
+        this.Stade = Stade;
+        this.StatutEpreuve = statutEpreuve;
         this.dateTime = dateTime;
         this.name = name;
     }
@@ -46,12 +44,12 @@ public class CreateEventDto {
         this.dateTime = dateTime;
     }
 
-    public Stadium getIdStade() {
-        return idStade;
+    public Stadium getStade() {
+        return Stade;
     }
 
-    public void setIdStade(Stadium idStade) {
-        this.idStade = idStade;
+    public void setStade(Stadium stade) {
+        this.Stade = stade;
     }
 
     public String getStatutEpreuve() {
