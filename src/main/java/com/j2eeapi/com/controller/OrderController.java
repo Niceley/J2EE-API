@@ -3,7 +3,10 @@ package com.j2eeapi.com.controller;
 import com.j2eeapi.com.dto.CreateOrderDto;
 import com.j2eeapi.com.dto.UpdateOrdersDto;
 import com.j2eeapi.com.model.Orders;
+import com.j2eeapi.com.model.Ticket;
+import com.j2eeapi.com.model.User;
 import com.j2eeapi.com.service.OrderService;
+import com.j2eeapi.com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +20,8 @@ public class OrderController {
 
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/create")
     public ResponseEntity<Orders> createOrders(@RequestBody CreateOrderDto createOrderDto) {
@@ -62,4 +67,12 @@ public class OrderController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @PostMapping("/buyTickets")
+    public ResponseEntity<Orders> buyTickets(@RequestParam Long userId, @RequestBody List<Ticket> tickets) {
+        User user = userService.findUserById(userId).getBody();
+        Orders order = orderService.buyTickets(user, tickets);
+        return ResponseEntity.ok(order);
+    }
+
 }

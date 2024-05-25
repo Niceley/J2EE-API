@@ -3,6 +3,7 @@ package com.j2eeapi.com.model;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Orders {
@@ -14,6 +15,22 @@ public class Orders {
     @ManyToOne
     @JoinColumn(name = "idUtilisateur")
     private User idUtilisateur;
+
+    @ManyToMany
+    @JoinTable(
+            name = "Orders_Ticket",
+            joinColumns = @JoinColumn(name = "idOrder"),
+            inverseJoinColumns = @JoinColumn(name = "idTicket")
+    )
+    private List<Ticket> tickets;
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
 
     public Orders() {
     }

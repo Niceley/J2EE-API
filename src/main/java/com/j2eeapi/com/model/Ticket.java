@@ -2,6 +2,8 @@ package com.j2eeapi.com.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Ticket {
     @Id
@@ -20,6 +22,25 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name = "idUtilisateurInscrit")
     private User UtilisateurInscrit;
+
+    @ManyToMany(mappedBy = "tickets")
+    private List<Orders> orders;
+
+    public List<Orders> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
+    }
+
+    public Orders getIdOrders() {
+        return idOrders;
+    }
+
+    public void setIdOrders(Orders idOrders) {
+        this.idOrders = idOrders;
+    }
 
     public Ticket() {
     }

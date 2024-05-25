@@ -14,6 +14,9 @@ public class User{
     private String Mail;
     private String RoleUtilisateur;
 
+    public User() {
+    }
+
     public User(Long idUtilisateur, String motdepasse, String nom, String prenom, String numero, String mail, String roleUtilisateur) {
         this.IdUtilisateur = idUtilisateur;
         this.Motdepasse = motdepasse;

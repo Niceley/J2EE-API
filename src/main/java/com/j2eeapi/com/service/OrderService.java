@@ -3,6 +3,8 @@ package com.j2eeapi.com.service;
 import com.j2eeapi.com.dto.CreateOrderDto;
 import com.j2eeapi.com.dto.UpdateOrdersDto;
 import com.j2eeapi.com.model.Orders;
+import com.j2eeapi.com.model.Ticket;
+import com.j2eeapi.com.model.User;
 import com.j2eeapi.com.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +29,13 @@ public class OrderService {
                         orders.getIdUtilisateur());
         order = repository.save(order);
         return new ResponseEntity<>(order, HttpStatus.CREATED);
+    }
+
+    public Orders buyTickets(User user, List<Ticket> tickets) {
+        Orders order = new Orders();
+        order.setIdUtilisateur(user);
+        order.setTickets(tickets);
+        return repository.save(order);
     }
 
     public ResponseEntity<Orders> getOrder(Long id) {
