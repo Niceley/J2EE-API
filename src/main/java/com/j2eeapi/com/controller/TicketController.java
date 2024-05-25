@@ -1,5 +1,7 @@
 package com.j2eeapi.com.controller;
 
+import com.j2eeapi.com.dto.CreateTicketDto;
+import com.j2eeapi.com.dto.UpdateTicketDto;
 import com.j2eeapi.com.model.Ticket;
 import com.j2eeapi.com.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +18,10 @@ public class TicketController {
     @Autowired
     private TicketService ticketService;
 
-    @PostMapping
-    public ResponseEntity<Ticket> createTicket(@RequestBody Ticket ticket) {
+    @PostMapping("/create")
+    public ResponseEntity<Ticket> createTicket(@RequestBody CreateTicketDto createTicketDto) {
         try {
-            return ResponseEntity.ok(ticketService.createTicket(ticket));
+            return ticketService.createTicket(createTicketDto);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -28,37 +30,37 @@ public class TicketController {
     @GetMapping("/{id}")
     public ResponseEntity<Ticket> getTicket(@PathVariable Long id) {
         try {
-            return ResponseEntity.ok(ticketService.getTicket(id));
+            return ticketService.getTicket(id);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Ticket>> getAllTickets() {
         try {
-            return ResponseEntity.ok(ticketService.getAllTickets());
+            return ticketService.getAllTickets();
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PutMapping
-    public ResponseEntity<Ticket> updateTicket(@RequestBody Ticket ticket) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Ticket> updateTicket(@PathVariable Long id, @RequestBody UpdateTicketDto UpdateTicketDto) {
         try {
-            return ResponseEntity.ok(ticketService.updateTicket(ticket));
+            return ticketService.updateTicket(id, UpdateTicketDto);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTicket(@PathVariable Long id) {
         try {
-            ticketService.deleteTicket(id);
-            return ResponseEntity.ok().build();
+            return ticketService.deleteTicket(id);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
 }

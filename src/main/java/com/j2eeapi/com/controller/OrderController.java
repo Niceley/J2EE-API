@@ -1,5 +1,7 @@
 package com.j2eeapi.com.controller;
 
+import com.j2eeapi.com.dto.CreateOrderDto;
+import com.j2eeapi.com.dto.UpdateOrdersDto;
 import com.j2eeapi.com.model.Orders;
 import com.j2eeapi.com.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +18,10 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @PostMapping
-    public ResponseEntity<Orders> createOrders(@RequestBody Orders Orders){
+    @PostMapping("/create")
+    public ResponseEntity<Orders> createOrders(@RequestBody CreateOrderDto createOrderDto) {
         try {
-            return ResponseEntity.ok(this.orderService.createOrder(Orders));
+            return orderService.createOrder(createOrderDto);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -28,35 +30,34 @@ public class OrderController {
     @GetMapping("/{id}")
     public ResponseEntity<Orders> getOrders(@PathVariable Long id) {
         try {
-            return ResponseEntity.ok(orderService.getOrders(id));
+            return orderService.getOrder(id);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Orders>> getAllOrders() {
         try {
-            return ResponseEntity.ok(orderService.getAllOrders());
+            return orderService.getAllOrders();
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PutMapping
-    public ResponseEntity<Orders> updateOrders(@RequestBody Orders Orders) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Orders> updateOrders(@PathVariable Long id, @RequestBody UpdateOrdersDto UpdateOrdersDto) {
         try {
-            return ResponseEntity.ok(orderService.updateOrder(Orders));
+            return orderService.updateOrder(id, UpdateOrdersDto);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteOrders(@PathVariable Long id) {
         try {
-            orderService.deleteOrder(id);
-            return ResponseEntity.ok().build();
+            return orderService.deleteOrder(id);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
