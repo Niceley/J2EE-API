@@ -24,7 +24,8 @@ public class OrderService {
         Orders order = new Orders(orders.getIdOrder(),
                       orders.getDateOrder(),
                         orders.getEtatCommande(),
-                        orders.getIdUtilisateur());
+                        orders.getIdUtilisateur(),
+                        orders.getTickets());
         order = repository.save(order);
         return new ResponseEntity<>(order, HttpStatus.CREATED);
     }
@@ -46,6 +47,7 @@ public class OrderService {
         order.setDateOrder(updateOrdersDto.getDateOrder());
         order.setEtatCommande(updateOrdersDto.getEtatCommande());
         order.setIdUtilisateur(updateOrdersDto.getIdUtilisateur());
+        order.setTickets(updateOrdersDto.getTickets());
         order = this.repository.save(order);
         return new ResponseEntity<>(order, HttpStatus.OK);
     }

@@ -27,6 +27,10 @@ public class User{
         this.RoleUtilisateur = roleUtilisateur;
     }
 
+    public User(String utilisateur){
+
+    }
+
     public Long getIdUtilisateur() {
         return IdUtilisateur;
     }
