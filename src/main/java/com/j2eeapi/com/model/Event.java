@@ -6,7 +6,7 @@ import java.util.Date;
 
 
 @Entity
-public class Event{
+public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idEvent;

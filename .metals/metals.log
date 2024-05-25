@@ -1,0 +1,11 @@
+2024.05.25 10:27:52 INFO  Started: Metals version 1.3.1 in folders 'C:\Users\David\Documents\J2EE-API' for client Visual Studio Code 1.89.1.
+SLF4J(W): Class path contains multiple SLF4J providers.
+SLF4J(W): Found provider [scribe.slf4j.ScribeServiceProvider@113af4fc]
+SLF4J(W): Found provider [ch.qos.logback.classic.spi.LogbackServiceProvider@5b4fd6f5]
+SLF4J(W): See https://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J(I): Actual provider is of type [scribe.slf4j.ScribeServiceProvider@113af4fc]
+2024.05.25 10:27:52 WARN  Flyway upgrade recommended: H2 2.2.224 is newer than this version of Flyway and support has not been tested. The latest supported version of H2 is 2.2.220.
+mai 25, 2024 10:27:53 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+AVERTISSEMENT: Unmatched cancel notification for request id 1
+mai 25, 2024 10:29:21 AM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFOS: Unsupported notification method: $/setTrace
