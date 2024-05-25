@@ -1,7 +1,7 @@
 package com.j2eeapi.com.dto;
 
 import com.j2eeapi.com.model.Event;
-import com.j2eeapi.com.model.Order;
+import com.j2eeapi.com.model.Orders;
 import com.j2eeapi.com.model.User;
 import jakarta.persistence.*;
 
@@ -9,10 +9,10 @@ public class CreateTicketDto {
     private Long id;
     private int price;
     private Event idEvent;
-    private Order idOrder;
+    private Orders idOrder;
     private User UtilisateurInscrit;
 
-    public CreateTicketDto(Long id, int price, Event idEvent, Order idOrder, User utilisateurInscrit) {
+    public CreateTicketDto(Long id, int price, Event idEvent, Orders idOrder, User utilisateurInscrit) {
         this.id = id;
         this.price = price;
         this.idEvent = idEvent;
@@ -44,11 +44,11 @@ public class CreateTicketDto {
         this.idEvent = idEvent;
     }
 
-    public Order getIdOrder() {
+    public Orders getIdOrder() {
         return idOrder;
     }
 
-    public void setIdOrder(Order idOrder) {
+    public void setIdOrder(Orders idOrder) {
         this.idOrder = idOrder;
     }
 
