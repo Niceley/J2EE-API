@@ -1,5 +1,7 @@
 package com.j2eeapi.com.controller;
 
+import com.j2eeapi.com.dto.CreateEventDto;
+import com.j2eeapi.com.dto.UpdateEventDto;
 import com.j2eeapi.com.model.Event;
 import com.j2eeapi.com.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +18,10 @@ public class EventController {
     @Autowired
     private EventService eventService;
 
-    @PostMapping
-    public ResponseEntity<Event> createEvent(@RequestBody Event event) {
-        try {
-            return ResponseEntity.ok(this.eventService.createEvent(event));
+    @PostMapping("/create")
+    public ResponseEntity<Event> createEvent(@RequestBody CreateEventDto createEventDto) {
+        try{
+            return eventService.createEvent(createEventDto);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -28,35 +30,34 @@ public class EventController {
     @GetMapping("/{id}")
     public ResponseEntity<Event> getEvent(@PathVariable Long id) {
         try {
-            return ResponseEntity.ok(eventService.getEvent(id));
+            return eventService.getEvent(id);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Event>> getAllEvents() {
         try {
-            return ResponseEntity.ok(eventService.getAllEvent());
+            return eventService.getAllEvents();
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PutMapping
-    public ResponseEntity<Event> updateEvent(@RequestBody Event event) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Event> updateEvent(@PathVariable Long id, @RequestBody UpdateEventDto updateEventDto) {
         try {
-            return ResponseEntity.ok(eventService.updateEvent(event));
+            return eventService.updateEvent(id, updateEventDto);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEvent(@PathVariable Long id) {
         try {
-            eventService.deleteEvent(id);
-            return ResponseEntity.ok().build();
+            return eventService.deleteEvent(id);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

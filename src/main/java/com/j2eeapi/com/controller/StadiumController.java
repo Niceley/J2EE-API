@@ -1,5 +1,7 @@
 package com.j2eeapi.com.controller;
 
+import com.j2eeapi.com.dto.CreateStadiumDto;
+import com.j2eeapi.com.dto.UpdateStadiumDto;
 import com.j2eeapi.com.model.Stadium;
 import com.j2eeapi.com.service.StadiumService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +18,10 @@ public class StadiumController {
     @Autowired
     private StadiumService stadiumService;
 
-    @PostMapping
-    public ResponseEntity<Stadium> createStadium(@RequestBody Stadium stadium) {
+    @PostMapping("/create")
+    public ResponseEntity<Stadium> createStadium(@RequestBody CreateStadiumDto CreateStadiumDto) {
         try {
-            return ResponseEntity.ok(this.stadiumService.createStadium(stadium));
+            return stadiumService.createStadium(CreateStadiumDto);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -28,40 +30,37 @@ public class StadiumController {
     @GetMapping("/{id}")
     public ResponseEntity<Stadium> getStadium(@PathVariable Long id) {
         try {
-            return ResponseEntity.ok(stadiumService.getStadium(id));
+            return stadiumService.getStadium(id);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Stadium>> getAllStadiums() {
         try {
-            return ResponseEntity.ok(stadiumService.getAllStadium());
+            return stadiumService.getAllStadiums();
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @PutMapping
-    public ResponseEntity<Stadium> updateStadium(@RequestBody Stadium stadium) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Stadium> updateStadium(@PathVariable Long id, @RequestBody UpdateStadiumDto UpdateStadiumDto) {
         try {
-            return ResponseEntity.ok(stadiumService.updateStadium(stadium));
+            return stadiumService.updateStadium(id, UpdateStadiumDto);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteStadium(@PathVariable Long id) {
         try {
-            stadiumService.deleteStadium(id);
-            return ResponseEntity.ok().build();
+            return stadiumService.deleteStadium(id);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
-
 
 }
