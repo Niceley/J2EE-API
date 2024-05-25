@@ -49,11 +49,7 @@ public class UserController {
 
     @PostMapping("")
     public ResponseEntity<User> createUser(@RequestBody CreateUserDto createUserDto){
-        try{
-            return userService.createUser(createUserDto);
-        }catch(RuntimeException e){
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        return userService.createUser(createUserDto);
     }
 
     @DeleteMapping("/users/{idUser}")
