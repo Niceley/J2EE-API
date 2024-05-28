@@ -3,17 +3,23 @@ package com.j2eeapi.com.service;
 import com.j2eeapi.com.dto.CreateOrderDto;
 import com.j2eeapi.com.dto.UpdateOrdersDto;
 import com.j2eeapi.com.model.Orders;
+import com.j2eeapi.com.model.Ticket;
 import com.j2eeapi.com.repository.OrderRepository;
+import com.j2eeapi.com.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class OrderService {
 
     private final OrderRepository repository;
+    @Autowired
+    private TicketRepository ticketRepository;
 
     @Autowired
     public OrderService(OrderRepository repository) {
@@ -21,11 +27,18 @@ public class OrderService {
     }
 
     public ResponseEntity<Orders> createOrder(CreateOrderDto orders){
+        List<Ticket> tickets = orders.getTickets();
+        List<Ticket> savedTickets = new ArrayList<>();
+        for (Ticket ticket : tickets) {
+            Ticket savedTicket = this.ticketRepository.save(ticket);
+            savedTickets.add(savedTicket);
+        }
         Orders order = new Orders(orders.getIdOrder(),
                       orders.getDateOrder(),
-                        orders.getEtatCommande(),
-                        orders.getIdUtilisateur(),
-                        orders.getTickets());
+                      orders.getEtatCommande(),
+                      orders.getIdUtilisateur(),
+                      savedTickets
+                        );
         order = repository.save(order);
         return new ResponseEntity<>(order, HttpStatus.CREATED);
     }

@@ -16,7 +16,8 @@ public class Orders {
     @JoinColumn(name = "idUtilisateur")
     private User idUtilisateur;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany
+    @JoinColumn(name = "orders")
     private List<Ticket> tickets;
 
     public Orders() {
