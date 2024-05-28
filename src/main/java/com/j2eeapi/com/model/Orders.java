@@ -16,12 +16,10 @@ public class Orders {
     @JoinColumn(name = "idUtilisateur")
     private User idUtilisateur;
 
-    @OneToMany
-    @JoinColumn(name = "ticket")
+    @OneToMany(mappedBy = "order")
     private List<Ticket> tickets;
 
-    public Orders(){
-
+    public Orders() {
     }
 
     public Orders(Long idOrder, Date dateOrder, String etatCommande, User idUtilisateur, List<Ticket> tickets) {
