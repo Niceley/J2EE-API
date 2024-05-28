@@ -20,11 +20,7 @@ public class OrderController {
 
     @PostMapping("/create")
     public ResponseEntity<Orders> createOrders(@RequestBody CreateOrderDto createOrderDto) {
-        try {
             return orderService.createOrder(createOrderDto);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
     }
 
     @GetMapping("/{id}")

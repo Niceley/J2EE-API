@@ -16,8 +16,6 @@ public class User{
     private String Mail;
     private String RoleUtilisateur;
 
-    @OneToMany(mappedBy = "UtilisateurInscrit")
-    private List<Ticket> tickets;
 
     public User() {
     }
@@ -34,14 +32,6 @@ public class User{
 
     public User(String utilisateur){
 
-    }
-
-    public List<Ticket> getTickets() {
-        return tickets;
-    }
-
-    public void setTickets(List<Ticket> tickets) {
-        this.tickets = tickets;
     }
 
 

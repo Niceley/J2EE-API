@@ -20,11 +20,7 @@ public class TicketController {
 
     @PostMapping("/create")
     public ResponseEntity<Ticket> createTicket(@RequestBody CreateTicketDto createTicketDto) {
-        try {
             return ticketService.createTicket(createTicketDto);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
     }
 
     @GetMapping("/{id}")

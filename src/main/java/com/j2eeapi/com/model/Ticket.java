@@ -17,11 +17,7 @@ public class Ticket {
     @JoinColumn(name = "idUtilisateurInscrit")
     private User UtilisateurInscrit;
 
-    @ManyToOne
-    @JoinColumn(name = "idOrder")
-    private Orders order;
-
-    public Ticket() {
+    public Ticket(){
 
     }
   
@@ -29,17 +25,10 @@ public class Ticket {
         this.idTicket = idTicket;
         this.price = price;
         this.idEvent = idEvent;
-        UtilisateurInscrit = utilisateurInscrit;
+        this.UtilisateurInscrit = utilisateurInscrit;
     }
 
-    public Orders getOrder() {
-        return order;
-    }
-
-    public void setOrder(Orders order) {
-        this.order = order;
-    }
-
+    ;
     public int getPrice() {
         return price;
     }
