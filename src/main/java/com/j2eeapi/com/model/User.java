@@ -2,6 +2,8 @@ package com.j2eeapi.com.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class User{
     @Id
@@ -13,6 +15,9 @@ public class User{
     private String Numero;
     private String Mail;
     private String RoleUtilisateur;
+
+    @OneToMany(mappedBy = "UtilisateurInscrit")
+    private List<Ticket> tickets;
 
     public User() {
     }
@@ -30,6 +35,15 @@ public class User{
     public User(String utilisateur){
 
     }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
 
     public Long getIdUtilisateur() {
         return IdUtilisateur;
