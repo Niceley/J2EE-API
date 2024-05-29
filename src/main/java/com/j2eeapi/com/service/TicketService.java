@@ -2,7 +2,9 @@ package com.j2eeapi.com.service;
 
 import com.j2eeapi.com.dto.CreateTicketDto;
 import com.j2eeapi.com.dto.UpdateTicketDto;
+import com.j2eeapi.com.model.Event;
 import com.j2eeapi.com.model.Ticket;
+import com.j2eeapi.com.model.User;
 import com.j2eeapi.com.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,5 +53,10 @@ public class TicketService {
     public ResponseEntity<Void> deleteTicket(Long id) {
         this.ticketRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    public ResponseEntity<Ticket> findByUserAndEvent(Event event, User utilisateurInscrit){
+        Ticket ticket = this.ticketRepository.findDistinctByIdEventAndUtilisateurInscrit(event, utilisateurInscrit);
+        return new ResponseEntity<>(ticket ,HttpStatus.OK);
     }
 }

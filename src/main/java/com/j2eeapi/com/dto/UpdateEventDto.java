@@ -12,13 +12,15 @@ public class UpdateEventDto {
     private Date dateTime;
     private String StatutEpreuve;
     private Stadium idStade;
+    private boolean estReservable;
 
-    public UpdateEventDto(Long id, Stadium idStade, String statutEpreuve, Date dateTime, String name) {
+    public UpdateEventDto(Long id, Stadium idStade, String statutEpreuve, Date dateTime, String name, boolean estReservable) {
         this.id = id;
         this.idStade = idStade;
         StatutEpreuve = statutEpreuve;
         this.dateTime = dateTime;
         this.name = name;
+        this.estReservable = estReservable;
     }
 
     public Long getId() {
@@ -59,5 +61,13 @@ public class UpdateEventDto {
 
     public void setStatutEpreuve(String statutEpreuve) {
         StatutEpreuve = statutEpreuve;
+    }
+
+    public boolean isEstReservable() {
+        return estReservable;
+    }
+
+    public void setEstReservable(boolean estReservable) {
+        this.estReservable = estReservable;
     }
 }

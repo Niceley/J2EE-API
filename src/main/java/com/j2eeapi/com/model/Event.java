@@ -16,16 +16,18 @@ public class Event {
     @ManyToOne
     @JoinColumn(name = "Stade")
     private Stadium Stade;
+    private boolean estReservable;
 
     public Event() {
     }
 
-    public Event(Long idEvent, String name, Date dateTime, String statutEpreuve, Stadium Stade) {
+    public Event(Long idEvent, String name, Date dateTime, String statutEpreuve, Stadium Stade, boolean estReservable) {
         this.idEvent = idEvent;
         this.name = name;
         this.dateTime = dateTime;
         StatutEpreuve = statutEpreuve;
         this.Stade = Stade;
+        this.estReservable = estReservable;
     }
 
     public Long getIdEvent() {
@@ -66,5 +68,13 @@ public class Event {
 
     public void setStade(Stadium stade) {
         this.Stade = stade;
+    }
+
+    public boolean isEstReservable() {
+        return estReservable;
+    }
+
+    public void setEstReservable(boolean estReservable) {
+        this.estReservable = estReservable;
     }
 }

@@ -4,6 +4,7 @@ import com.j2eeapi.com.dto.CreateEventDto;
 import com.j2eeapi.com.dto.UpdateEventDto;
 import com.j2eeapi.com.model.Event;
 import com.j2eeapi.com.repository.EventRepository;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +24,8 @@ public class EventService {
                 createEventDto.getName(),
                 createEventDto.getDateTime(),
                 createEventDto.getStatutEpreuve(),
-                createEventDto.getStade());
+                createEventDto.getStade(),
+                createEventDto.isEstReservable());
         event = repository.save(event);
         return new ResponseEntity<>(event, HttpStatus.CREATED);
     }
@@ -46,6 +48,7 @@ public class EventService {
     event.setDateTime(updateEventDto.getDateTime());
     event.setStatutEpreuve(updateEventDto.getStatutEpreuve());
     event.setStade(updateEventDto.getIdStade());
+    event.setEstReservable(updateEventDto.isEstReservable());
     event = this.repository.save(event);
     return new ResponseEntity<>(event, HttpStatus.OK);
     }
@@ -54,4 +57,6 @@ public class EventService {
         this.repository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
 }
