@@ -62,8 +62,9 @@ public class UserService {
                 createUserDto.getMail(),
                 createUserDto.getRoleUtilisateur()
         );
-        repository.save(newUser);
-        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+        User userCreated = repository.save(newUser);
+
+        return new ResponseEntity<>(userCreated, HttpStatus.CREATED);
     }
 
     public ResponseEntity<User> updateUser(Long idUser, UpdateUserDto updateUserDto){

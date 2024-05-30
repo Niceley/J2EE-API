@@ -28,8 +28,15 @@ public class OrderService {
 
     public ResponseEntity<Orders> createOrder(CreateOrderDto orders){
         List<Ticket> tickets = orders.getTickets();
+        if(tickets.get(0).getIdEvent().isEstReservable() == false){
+            throw new RuntimeException("Reservation fermée");
+        }
         List<Ticket> savedTickets = new ArrayList<>();
         for (Ticket ticket : tickets) {
+            Ticket searchTicket = this.ticketRepository.findDistinctByIdEventAndUtilisateurInscrit(ticket.getIdEvent(), ticket.getUtilisateurInscrit());
+            if(searchTicket != null){
+                throw new RuntimeException("User déjà inscrit");
+            }
             Ticket savedTicket = this.ticketRepository.save(ticket);
             savedTickets.add(savedTicket);
         }

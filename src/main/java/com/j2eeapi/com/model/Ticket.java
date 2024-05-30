@@ -14,8 +14,8 @@ public class Ticket {
     private Event idEvent;
 
     @ManyToOne
-    @JoinColumn(name = "idUtilisateurInscrit")
-    private User UtilisateurInscrit;
+    @JoinColumn(name = "utilisateurInscrit")
+    private User utilisateurInscrit;
 
     public Ticket(){
 
@@ -25,7 +25,7 @@ public class Ticket {
         this.idTicket = idTicket;
         this.price = price;
         this.idEvent = idEvent;
-        this.UtilisateurInscrit = utilisateurInscrit;
+        this.utilisateurInscrit = utilisateurInscrit;
     }
 
     ;
@@ -43,7 +43,7 @@ public class Ticket {
     }
 
     public User getUtilisateurInscrit() {
-        return UtilisateurInscrit;
+        return utilisateurInscrit;
     }
 
     public void setIdTicket(Long idTicket) {
@@ -51,7 +51,7 @@ public class Ticket {
     }
 
     public void setUtilisateurInscrit(User utilisateurInscrit) {
-        UtilisateurInscrit = utilisateurInscrit;
+        this.utilisateurInscrit = utilisateurInscrit;
     }
 
     public Long getIdTicket() {

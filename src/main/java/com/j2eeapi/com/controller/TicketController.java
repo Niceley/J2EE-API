@@ -2,7 +2,9 @@ package com.j2eeapi.com.controller;
 
 import com.j2eeapi.com.dto.CreateTicketDto;
 import com.j2eeapi.com.dto.UpdateTicketDto;
+import com.j2eeapi.com.model.Event;
 import com.j2eeapi.com.model.Ticket;
+import com.j2eeapi.com.model.User;
 import com.j2eeapi.com.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -57,6 +59,11 @@ public class TicketController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+    }
+
+    @GetMapping("/checkTicket")
+    public ResponseEntity<Ticket> findByUserAndEvent(@RequestBody Event event, @RequestBody User user){
+            return ticketService.findByUserAndEvent(event, user);
     }
 
 }
