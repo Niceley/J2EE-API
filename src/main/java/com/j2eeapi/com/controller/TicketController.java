@@ -61,9 +61,4 @@ public class TicketController {
         }
     }
 
-    @GetMapping("/checkTicket")
-    public ResponseEntity<Ticket> findByUserAndEvent(@RequestBody Event event, @RequestBody User user){
-            return ticketService.findByUserAndEvent(event, user);
-    }
-
 }
