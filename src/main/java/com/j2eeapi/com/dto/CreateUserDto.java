@@ -7,18 +7,16 @@ public class CreateUserDto {
     private String Nom;
     private String Prenom;
     private String Numero;
-    private String Mail;
-    private String RoleUtilisateur;
+    private String email;
 
 
-    public CreateUserDto(Long idUtilisateur, String motdepasse, String nom, String prenom, String numero, String mail, String roleUtilisateur) {
+    public CreateUserDto(Long idUtilisateur, String motdepasse, String nom, String prenom, String numero, String email) {
         IdUtilisateur = idUtilisateur;
         Motdepasse = motdepasse;
         Nom = nom;
         Prenom = prenom;
         Numero = numero;
-        Mail = mail;
-        RoleUtilisateur = roleUtilisateur;
+        this.email = email;
     }
 
     public Long getIdUtilisateur() {
@@ -61,19 +59,12 @@ public class CreateUserDto {
         Numero = numero;
     }
 
-    public String getMail() {
-        return Mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        Mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getRoleUtilisateur() {
-        return RoleUtilisateur;
-    }
-
-    public void setRoleUtilisateur(String roleUtilisateur) {
-        RoleUtilisateur = roleUtilisateur;
-    }
 }
