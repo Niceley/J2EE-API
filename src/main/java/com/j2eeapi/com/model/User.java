@@ -1,11 +1,14 @@
 package com.j2eeapi.com.model;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.List;
 
 @Entity
-public class User{
+public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long IdUtilisateur;
@@ -13,24 +16,22 @@ public class User{
     private String Nom;
     private String Prenom;
     private String Numero;
-    private String Mail;
-    private String RoleUtilisateur;
+    private String email;
 
 
     public User() {
     }
 
-    public User(Long idUtilisateur, String motdepasse, String nom, String prenom, String numero, String mail, String roleUtilisateur) {
+    public User(Long idUtilisateur, String motdepasse, String nom, String prenom, String numero, String email) {
         this.IdUtilisateur = idUtilisateur;
         this.Motdepasse = motdepasse;
         this.Nom = nom;
         this.Prenom = prenom;
         this.Numero = numero;
-        this.Mail = mail;
-        this.RoleUtilisateur = roleUtilisateur;
+        this.email = email;
     }
 
-    public User(String utilisateur){
+    public User(String utilisateur) {
 
     }
 
@@ -75,19 +76,46 @@ public class User{
         Numero = numero;
     }
 
-    public String getMail() {
-        return Mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        Mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getRoleUtilisateur() {
-        return RoleUtilisateur;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of();
     }
 
-    public void setRoleUtilisateur(String roleUtilisateur) {
-        RoleUtilisateur = roleUtilisateur;
+    @Override
+    public String getPassword() {
+        return Motdepasse;
+    }
+
+    @Override
+    public String getUsername() {
+        return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

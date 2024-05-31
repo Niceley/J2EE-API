@@ -1,20 +1,20 @@
 package com.j2eeapi.com.dto;
 
 public class LoginDto {
-    private Long IdUtilisateur;
+    private String email;
     private String Motdepasse;
 
-    public LoginDto(Long idUtilisateur, String motdepasse) {
-        IdUtilisateur = idUtilisateur;
+    public LoginDto(String email, String motdepasse) {
+        this.email = email;
         Motdepasse = motdepasse;
     }
 
-    public Long getIdUtilisateur() {
-        return IdUtilisateur;
+    public String getEmail() {
+        return email;
     }
 
-    public void setIdUtilisateur(Long idUtilisateur) {
-        IdUtilisateur = idUtilisateur;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getMotdepasse() {

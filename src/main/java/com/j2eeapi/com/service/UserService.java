@@ -8,7 +8,6 @@ import com.j2eeapi.com.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigInteger;
@@ -31,7 +30,7 @@ public class UserService {
     }
 
     public ResponseEntity<User> login(LoginDto loginDto){
-        User user = repository.findById(loginDto.getIdUtilisateur()).orElseThrow(null);
+        User user = repository.findByEmail(loginDto.getEmail()).orElseThrow(null);
         if (user == null){
             throw new RuntimeException("Utilisateur inexistant.");
         }
@@ -48,9 +47,10 @@ public class UserService {
     }
 
     public ResponseEntity<User> createUser(CreateUserDto createUserDto){
-        //if(repository.findById(createUserDto.getIdUtilisateur()).isPresent()){
-        //    throw new RuntimeException("Utilisateur existant");
-        //}
+        if(repository.findByEmail(createUserDto.getEmail()).isPresent()){
+            throw new RuntimeException("Email déjà utilisé.");
+        }
+
         String hashedpassword = hashPassword(createUserDto.getMotdepasse());
         User newUser;
         newUser = new User(
@@ -59,8 +59,7 @@ public class UserService {
                 createUserDto.getNom(),
                 createUserDto.getPrenom(),
                 createUserDto.getNumero(),
-                createUserDto.getMail(),
-                createUserDto.getRoleUtilisateur()
+                createUserDto.getEmail()
         );
         User userCreated = repository.save(newUser);
 
@@ -72,9 +71,8 @@ public class UserService {
 
         existingUser.setNom(updateUserDto.getNom());
         existingUser.setPrenom(updateUserDto.getPrenom());
-        existingUser.setMail(updateUserDto.getMail());
+        existingUser.setEmail(updateUserDto.getMail());
         existingUser.setNumero(updateUserDto.getNumero());
-        existingUser.setRoleUtilisateur(updateUserDto.getRoleUtilisateur());
         User updatedUser = repository.save(existingUser);
         return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }

@@ -7,17 +7,15 @@ public class UpdateUserDto {
     private String Prenom;
     private String Numero;
     private String Mail;
-    private String RoleUtilisateur;
 
 
-    public UpdateUserDto(Long idUtilisateur, String motdepasse, String nom, String prenom, String numero, String mail, String roleUtilisateur) {
+    public UpdateUserDto(Long idUtilisateur, String motdepasse, String nom, String prenom, String numero, String mail) {
         IdUtilisateur = idUtilisateur;
         Motdepasse = motdepasse;
         Nom = nom;
         Prenom = prenom;
         Numero = numero;
         Mail = mail;
-        RoleUtilisateur = roleUtilisateur;
     }
 
     public Long getIdUtilisateur() {
@@ -66,14 +64,6 @@ public class UpdateUserDto {
 
     public void setMail(String mail) {
         Mail = mail;
-    }
-
-    public String getRoleUtilisateur() {
-        return RoleUtilisateur;
-    }
-
-    public void setRoleUtilisateur(String roleUtilisateur) {
-        RoleUtilisateur = roleUtilisateur;
     }
 
 }
